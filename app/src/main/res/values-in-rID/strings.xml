@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aplikasi Pengguna Github</string>
+    <string name="text_repositories">Repository</string>
+    <string name="text_followers">Pengikut</string>
+    <string name="text_following">Mengikuti</string>
+    <string name="text_search">Cari</string>
+    <string name="text_detail_user">Detail User</string>
+    <string name="text_not_found">Pengguna tidak ditemukan</string>
+    <string name="text_first_information">Silakan cari pengguna github</string>
+    <string name="text_change_language">Ganti bahasa</string>
+    <string name="todo">TODO</string>
+</resources>
