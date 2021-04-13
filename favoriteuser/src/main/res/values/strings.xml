@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Github Users Favorite</string>
+    <string name="text_detail_user">User Details</string>
+    <string name="text_repositories">Repositories</string>
+    <string name="text_followers">Followers</string>
+    <string name="text_following">Following</string>
+    <string name="text_favorite">Favorite</string>
+    <string name="text_no_favorite">There is no favorite</string>
+    <string name="todo">TODO</string>
+
+</resources>

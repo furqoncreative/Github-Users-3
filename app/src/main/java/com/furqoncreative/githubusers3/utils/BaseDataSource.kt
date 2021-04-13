@@ -1,6 +1,5 @@
-package com.furqoncreative.githubusers3.data.remote
+package com.furqoncreative.githubusers3.utils
 
-import com.furqoncreative.githubusers3.utils.Resource
 import retrofit2.Response
 
 abstract class BaseDataSource {

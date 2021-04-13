@@ -1,8 +1,9 @@
 package com.furqoncreative.githubusers3.data.entities.searchuser
 
+import com.furqoncreative.githubusers3.data.entities.userdata.UserData
 import com.google.gson.annotations.SerializedName
 
-data class SearchUserResponse(
+data class GithubUsersResponse(
 
 	@field:SerializedName("total_count")
 	val totalCount: Int? = null,
@@ -11,5 +12,5 @@ data class SearchUserResponse(
 	val incompleteResults: Boolean? = null,
 
 	@field:SerializedName("items")
-	val items: List<GithubUser>? = null
+	val items: List<UserData>? = null
 )

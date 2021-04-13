@@ -1,7 +1,10 @@
 package com.furqoncreative.githubusers3.di
 
+import android.content.Context
 import com.furqoncreative.githubusers3.BuildConfig.API_TOKEN
 import com.furqoncreative.githubusers3.BuildConfig.BASE_URL
+import com.furqoncreative.githubusers3.data.local.AppDatabase
+import com.furqoncreative.githubusers3.data.local.LocalDataSource
 import com.furqoncreative.githubusers3.data.remote.AppService
 import com.furqoncreative.githubusers3.data.remote.RemoteDataSource
 import com.furqoncreative.githubusers3.data.repository.AppRepository
@@ -10,6 +13,7 @@ import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -58,16 +62,33 @@ object AppModule {
     }
 
     @Provides
-    fun provideCharacterService(retrofit: Retrofit): AppService =
+    fun provideAppService(retrofit: Retrofit): AppService =
         retrofit.create(AppService::class.java)
 
     @Singleton
     @Provides
-    fun provideCharacterRemoteDataSource(appService: AppService) = RemoteDataSource(appService)
+    fun provideRemoteDataSource(
+        appService: AppService,
+    ) = RemoteDataSource(appService)
+
+    @Singleton
+    @Provides
+    fun provideLocalDataSource(
+        @ApplicationContext appContext: Context,
+    ) = LocalDataSource(appContext)
 
 
     @Singleton
     @Provides
-    fun provideRepository(remoteDataSource: RemoteDataSource) =
-        AppRepository(remoteDataSource)
+    fun provideDatabase(@ApplicationContext appContext: Context) =
+        AppDatabase.getDatabase(appContext)
+
+    @Singleton
+    @Provides
+    fun provideFavoriteDao(db: AppDatabase) = db.favoriteUserDao()
+
+    @Singleton
+    @Provides
+    fun provideRepository(remoteDataSource: RemoteDataSource, localDataSource: LocalDataSource) =
+        AppRepository(remoteDataSource, localDataSource)
 }

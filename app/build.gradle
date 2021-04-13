@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-parcelize'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
 }
@@ -20,7 +21,7 @@ android {
         versionCode 1
         versionName "1.0"
         buildConfigField "String", "BASE_URL", "\"https://api.github.com/\""
-        buildConfigField "String", "API_TOKEN", "\"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\""
+        buildConfigField "String", "API_TOKEN", "\"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\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -53,6 +54,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.preference:preference-ktx:1.1.1'
 
     //Lifecycle
     def lifecycle_version = "2.3.1"
@@ -72,6 +74,12 @@ dependencies {
     kapt 'com.google.dagger:hilt-android-compiler:2.33-beta'
     kapt "androidx.hilt:hilt-compiler:1.0.0-beta01"
 
+    //Room
+    def room_version = "2.2.6"
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     kapt 'com.github.bumptech.glide:compiler:4.11.0'

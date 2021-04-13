@@ -2,7 +2,6 @@ package com.furqoncreative.githubusers3.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View.GONE
@@ -13,14 +12,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.furqoncreative.githubusers3.R
+import com.furqoncreative.githubusers3.data.entities.userdata.UserData
 import com.furqoncreative.githubusers3.databinding.ActivityMainBinding
 import com.furqoncreative.githubusers3.ui.detailuser.DetailUserActivity
+import com.furqoncreative.githubusers3.ui.favoriteuser.FavoriteUserActivity
 import com.furqoncreative.githubusers3.ui.main.adapter.SearchUserAdapter
+import com.furqoncreative.githubusers3.ui.settings.SettingsActivity
 import com.furqoncreative.githubusers3.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), SearchUserAdapter.GithubUSerItemListener {
+class MainActivity : AppCompatActivity(), SearchUserAdapter.GithubUserItemListener {
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels()
     private lateinit var adapter: SearchUserAdapter
@@ -52,9 +54,15 @@ class MainActivity : AppCompatActivity(), SearchUserAdapter.GithubUSerItemListen
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.action_change_language) {
-            val mIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
-            startActivity(mIntent)
+        when(item.itemId){
+            R.id.action_settings -> {
+                val mIntent = Intent(this, SettingsActivity::class.java)
+                startActivity(mIntent)
+            }
+            R.id.action_favorite ->{
+                val mIntent = Intent(this, FavoriteUserActivity::class.java)
+                startActivity(mIntent)
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -99,9 +107,9 @@ class MainActivity : AppCompatActivity(), SearchUserAdapter.GithubUSerItemListen
         })
     }
 
-    override fun onClickedUser(username: String?) {
+    override fun onClickedUser(userData: UserData) {
         val intent = Intent(this, DetailUserActivity::class.java)
-        intent.putExtra(DetailUserActivity.ITEM, username)
+        intent.putExtra(DetailUserActivity.ITEM, userData)
         startActivity(intent)
     }
 }

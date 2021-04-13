@@ -5,9 +5,26 @@
     <string name="text_followers">Followers</string>
     <string name="text_following">Following</string>
     <string name="text_search">Search</string>
+    <string name="text_favorite">Favorite</string>
+    <string name="text_no_favorite">There is no favorite</string>
     <string name="text_detail_user">User Details</string>
     <string name="text_not_found">User not found</string>
     <string name="text_first_information">Please search for github users</string>
-    <string name="text_change_language">Change language</string>
     <string name="todo">TODO</string>
+    <string name="title_settings">Settings</string>
+
+    <string name="notification">Notification</string>
+    <string name="turn_on_off">Turn Off/On Notification</string>
+    <string name="daily_reminder">Daily Remainder</string>
+    <string name="language">Language</string>
+    <string name="change_language">Change Language</string>
+    <string name="change_language_summary">Change your Application Language</string>
+
+    <string name="key_language">KEY_LANGUAGE</string>
+    <string name="key_reminder">KEY_REMINDER</string>
+
+    <string name="daily_reminder_title">Good morning! it\'s time for check Github User App</string>
+    <string name="daily_reminder_message">You can search for Github users from all over the world </string>
+    <string name="daily_reminder_actived">Daily Reminder Actived</string>
+    <string name="daily_reminder_deacatived">Daily Reminder Deactivated</string>
 </resources>

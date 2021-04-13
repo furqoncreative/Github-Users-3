@@ -1,9 +1,10 @@
 package com.furqoncreative.githubusers3.data.remote
 
+import com.furqoncreative.githubusers3.utils.BaseDataSource
 import javax.inject.Inject
 
 class RemoteDataSource @Inject constructor(
-    private val appService: AppService
+    private val appService: AppService,
 ) : BaseDataSource() {
 
     suspend fun getSearchUser(username: String?) = getResult { appService.getSearchUser(username) }
@@ -15,4 +16,6 @@ class RemoteDataSource @Inject constructor(
 
     suspend fun getFollowingUser(username: String?) =
         getResult { appService.getFollowingUser(username) }
+
+
 }

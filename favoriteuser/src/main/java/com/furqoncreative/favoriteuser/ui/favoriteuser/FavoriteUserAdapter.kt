@@ -1,25 +1,24 @@
-package com.furqoncreative.githubusers3.ui.main.adapter
+package com.furqoncreative.favoriteuser.ui.favoriteuser
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.furqoncreative.githubusers3.data.entities.searchuser.GithubUser
-import com.furqoncreative.githubusers3.databinding.ItemRowGithubUserBinding
+import com.furqoncreative.favoriteuser.data.entities.userdata.UserData
+import com.furqoncreative.favoriteuser.databinding.ItemRowGithubUserBinding
 
-class SearchUserAdapter(private val listener: GithubUSerItemListener) :
+
+class FavoriteUserAdapter(private val listener: GithubUserItemListener) :
     RecyclerView.Adapter<GithubUserViewHolder>() {
-
-    interface GithubUSerItemListener {
-        fun onClickedUser(username: String?)
+    interface GithubUserItemListener {
+        fun onClickedUser(userData: UserData)
     }
 
-    private val items = ArrayList<GithubUser>()
+    val items = ArrayList<UserData>()
 
-    fun setItems(items: ArrayList<GithubUser>) {
+    fun setItems(items: ArrayList<UserData>) {
         this.items.clear()
         this.items.addAll(items)
         notifyDataSetChanged()
@@ -39,19 +38,18 @@ class SearchUserAdapter(private val listener: GithubUSerItemListener) :
 
 class GithubUserViewHolder(
     private val itemBinding: ItemRowGithubUserBinding,
-    private val listener: SearchUserAdapter.GithubUSerItemListener
+    private val listener: FavoriteUserAdapter.GithubUserItemListener,
 ) : RecyclerView.ViewHolder(itemBinding.root),
     View.OnClickListener {
 
-    private lateinit var user: GithubUser
+    private lateinit var userData: UserData
 
     init {
         itemBinding.root.setOnClickListener(this)
     }
 
-    @SuppressLint("SetTextI18n")
-    fun bind(item: GithubUser) {
-        this.user = item
+    fun bind(item: UserData) {
+        this.userData = item
         itemBinding.txtUsername.text = item.login
         Glide.with(itemBinding.root)
             .load(item.avatarUrl)
@@ -60,7 +58,7 @@ class GithubUserViewHolder(
     }
 
     override fun onClick(v: View?) {
-        listener.onClickedUser(user.login)
+        listener.onClickedUser(userData)
     }
 }
 

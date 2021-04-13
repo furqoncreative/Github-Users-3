@@ -9,8 +9,14 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_change_language"
-        android:title="@string/text_change_language"
+        android:id="@+id/action_favorite"
+        android:icon="@drawable/ic_action_favorite"
+        android:title="@string/text_favorite"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/title_settings"
         app:showAsAction="never" />
 
 </menu>

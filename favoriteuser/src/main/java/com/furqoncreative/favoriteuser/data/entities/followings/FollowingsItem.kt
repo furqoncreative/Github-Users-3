@@ -1,9 +1,8 @@
-package com.furqoncreative.githubusers3.data.entities.searchuser
+package com.furqoncreative.favoriteuser.data.entities.followings
 
 import com.google.gson.annotations.SerializedName
 
-data class GithubUser(
-
+data class FollowingsItem(
 	@field:SerializedName("gists_url")
 	val gistsUrl: String? = null,
 
@@ -30,9 +29,6 @@ data class GithubUser(
 
 	@field:SerializedName("subscriptions_url")
 	val subscriptionsUrl: String? = null,
-
-	@field:SerializedName("score")
-	val score: Double? = null,
 
 	@field:SerializedName("received_events_url")
 	val receivedEventsUrl: String? = null,
